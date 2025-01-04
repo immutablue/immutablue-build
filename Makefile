@@ -25,7 +25,7 @@ clean:
 IMMUTABLUE := immutablue immutablue-lts
 IMMUTABLUE_CYAN := immutablue-cyan
 IMMUTABLUE_NUCLEUS := immutablue-nucleus immutablue-nucleus-lts
-IMMUTABLUE_KUBERBLUE := kuberblue kuberblue-lts kuberblue-nucleus kuberblue-nuclues-lts
+IMMUTABLUE_KUBERBLUE := kuberblue kuberblue-lts kuberblue-nucleus kuberblue-nucleus-lts
 IMMUTABLUE_TRUEBLUE := trueblue trueblue-lts trueblue-nucleus trueblue-nucleus-lts trueblue-kuberblue trueblue-kuberblue-lts trueblue-kuberblue-nucleus trueblue-kuberblue-nucleus-lts
 
 # all: $(IMMUTABLUE) $(IMMUTABLUE_CYAN) $(IMMUTABLUE_NUCLEUS) $(IMMUTABLUE_KUBERBLUE) $(IMMUTABLUE_TRUEBLUE)
@@ -33,7 +33,7 @@ all: $(IMMUTABLUE) $(IMMUTABLUE_NUCLEUS) $(IMMUTABLUE_KUBERBLUE) $(IMMUTABLUE_TR
 
 
 immutablue:
-	cd ./immutablue && make all 
+	cd ./immutablue && make DO_INSTALL_ZFS=true all 
 
 immutablue-lts:
 	cd ./immutablue && make LTS=1 all 
