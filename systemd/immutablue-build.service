@@ -1,0 +1,14 @@
+[Unit]
+Description=Build Immutablue
+
+[Service]
+Type=oneshot
+User=zach
+RemainAfterExit=true
+StandardOutput=journal
+ExecStart=/usr/bin/bash /home/zach/Source/immutablue-build/scripts/build-job.sh
+ExecStop=/usr/bin/bash -c "cd /home/zach/Source/build && make clean"
+
+[Install]
+WantedBy=default.target
+
