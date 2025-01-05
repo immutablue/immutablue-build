@@ -1,4 +1,4 @@
-.PHONY: all clean clone immutablue immutablue-cyan immutablue-nucleus kuberblue trueblue
+.PHONY: all clean clone immutablue immutablue-cyan immutablue-nucleus kuberblue trueblue hyacinth-macaw blue-tuxonaut hawk-blueah
 CLONE := clone_immutablue clone_immutablue-cyan clone_immutablue-nucleus clone_kuberblue clone_trueblue clone_hyacinth-macaw clone_blue-tuxonaut clone_hawk-blueah
 
 
