@@ -2,6 +2,11 @@
 BUILD_DIR="/home/zach/Source/immutablue-build"
 export REGISTRY_AUTH_FILE="/home/zach/.config/containers/auth.json"
 
+if [[ $# -ge 1 ]] && [[ "$1" == "--prune" ]]
+then 
+    buildah rmi -af 
+fi
+
 buildah login quay.io
 cd "$BUILD_DIR"
 make clone 

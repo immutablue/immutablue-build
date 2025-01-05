@@ -6,7 +6,7 @@ Type=oneshot
 User=zach
 RemainAfterExit=true
 StandardOutput=journal
-ExecStart=/usr/bin/bash /home/zach/Source/immutablue-build/scripts/build-job.sh
+ExecStart=/usr/bin/bash /home/zach/Source/immutablue-build/scripts/build-job.sh --prune
 ExecStop=/usr/bin/bash -c "cd /home/zach/Source/build && make clean"
 
 [Install]
