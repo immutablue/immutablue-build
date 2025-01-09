@@ -4,6 +4,7 @@ CLONE := clone_immutablue clone_immutablue-cyan clone_immutablue-nucleus clone_k
 
 clone_immutablue:
 	git clone https://gitlab.com/immutablue/immutablue
+	bash -c "cd ./immutablue && git submodule init && git submodule update"
 
 clone_immutablue-cyan:
 	git clone https://gitlab.com/immutablue/immutablue-cyan

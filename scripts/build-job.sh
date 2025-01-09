@@ -9,6 +9,7 @@ fi
 
 buildah login quay.io
 cd "$BUILD_DIR"
+git pull
 make clone 
 make main 
 
