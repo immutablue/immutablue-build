@@ -1,5 +1,5 @@
 .PHONY: all clean clone immutablue immutablue-cyan immutablue-nucleus kuberblue trueblue hyacinth-macaw blue-tuxonaut hawk-blueah
-CLONE := clone_immutablue clone_immutablue-cyan clone_immutablue-nucleus clone_kuberblue clone_trueblue clone_hyacinth-macaw clone_blue-tuxonaut clone_hawk-blueah
+CLONE := clone_immutablue clone_immutablue-cyan clone_immutablue-nucleus clone_kuberblue clone_trueblue clone_hyacinth-macaw clone_blue-tuxonaut clone_hawk-blueah clone_dbox_fedora
 
 
 clone_immutablue:
@@ -27,6 +27,8 @@ clone_blue-tuxonaut:
 clone_hawk-blueah:
 	git clone https://gitlab.com/immutablue/hawk-blueah
 
+clone_dbox_fedora:
+	git clone https://gitlab.com/immutablue/dbox-fedora
 
 
 clone: $(CLONE)
@@ -41,10 +43,11 @@ IMMUTABLUE_TRUEBLUE := trueblue trueblue-lts trueblue-nucleus trueblue-nucleus-l
 HYACINTH_MACAW := hyacinth-macaw hyacinth-macaw-lts
 BLUE_TUXONAUT := blue-tuxonaut blue-tuxonaut-lts
 HAWK_BLUEAH := hawk-blueah hawk-blueah-lts
+DBOX_CONTAINERS := dbox-fedora
 
 
 # all: $(IMMUTABLUE) $(IMMUTABLUE_CYAN) $(IMMUTABLUE_NUCLEUS) $(IMMUTABLUE_KUBERBLUE) $(IMMUTABLUE_TRUEBLUE)
-main: $(IMMUTABLUE) $(IMMUTABLUE_NUCLEUS) $(IMMUTABLUE_KUBERBLUE) $(IMMUTABLUE_TRUEBLUE)
+main: $(IMMUTABLUE) $(IMMUTABLUE_NUCLEUS) $(IMMUTABLUE_KUBERBLUE) $(IMMUTABLUE_TRUEBLUE) $(DBOX_CONTAINERS)
 nvidia: $(IMMUTABLUE_CYAN)
 downstream: $(HYACINTH_MACAW) $(BLUE_TUXONAUT) $(HAWK_BLUEAH)
 downstream-nvidia: hyacinth-macaw-cyan blue-tuxonaut-cyan hawk-blueah-cyan
@@ -132,3 +135,10 @@ hawk-blueah-lts:
 
 hawk-blueah-cyan:
 	cd ./hawk-blueah && make NVIDIA=1 all
+
+
+
+
+dbox-fedora:
+	cd ./dbox-fedora && make all
+
