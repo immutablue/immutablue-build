@@ -1,4 +1,4 @@
-.PHONY: all clean clone immutablue immutablue-cyan immutablue-nucleus kuberblue trueblue hyacinth-macaw blue-tuxonaut hawk-blueah
+.PHONY: all clean clone immutablue immutablue-cyan immutablue-nucleus kuberblue trueblue hyacinth-macaw blue-tuxonaut hawk-blueah dbox-fedora
 CLONE := clone_immutablue clone_immutablue-cyan clone_immutablue-nucleus clone_kuberblue clone_trueblue clone_hyacinth-macaw clone_blue-tuxonaut clone_hawk-blueah clone_dbox_fedora
 
 
@@ -33,7 +33,7 @@ clone_dbox_fedora:
 
 clone: $(CLONE)
 clean:
-	rm -rf ./immutablue{,-cyan,-nucleus} ./kuberblue ./trueblue ./hyacinth-macaw ./hawk-blueah ./blue-tuxonaut
+	rm -rf ./immutablue{,-cyan,-nucleus} ./kuberblue ./trueblue ./hyacinth-macaw ./hawk-blueah ./blue-tuxonaut ./dbox-fedora
 
 IMMUTABLUE := immutablue immutablue-lts
 IMMUTABLUE_CYAN := immutablue-cyan
