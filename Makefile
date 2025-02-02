@@ -1,16 +1,10 @@
 .PHONY: all clean clone immutablue immutablue-cyan immutablue-nucleus kuberblue trueblue hyacinth-macaw blue-tuxonaut hawk-blueah dbox-fedora
-CLONE := clone_immutablue clone_immutablue-cyan clone_immutablue-nucleus clone_kuberblue clone_trueblue clone_hyacinth-macaw clone_blue-tuxonaut clone_hawk-blueah clone_dbox_fedora
+CLONE := clone_immutablue clone_kuberblue clone_trueblue clone_hyacinth-macaw clone_blue-tuxonaut clone_hawk-blueah clone_dbox_fedora
 
 
 clone_immutablue:
 	git clone https://gitlab.com/immutablue/immutablue
 	bash -c "cd ./immutablue && git submodule init && git submodule update"
-
-clone_immutablue-cyan:
-	git clone https://gitlab.com/immutablue/immutablue-cyan
-
-clone_immutablue-nucleus:
-	git clone https://gitlab.com/immutablue/immutablue-nucleus
 
 clone_kuberblue: 
 	git clone https://gitlab.com/immutablue/kuberblue
@@ -36,7 +30,7 @@ clean:
 	rm -rf ./immutablue{,-cyan,-nucleus} ./kuberblue ./trueblue ./hyacinth-macaw ./hawk-blueah ./blue-tuxonaut ./dbox-fedora
 
 IMMUTABLUE := immutablue immutablue-lts
-IMMUTABLUE_CYAN := immutablue-cyan
+IMMUTABLUE_CYAN := immutablue-cyan immutablue-nucleus-cyan
 IMMUTABLUE_NUCLEUS := immutablue-nucleus immutablue-nucleus-lts
 IMMUTABLUE_KUBERBLUE := kuberblue kuberblue-lts kuberblue-nucleus kuberblue-nucleus-lts
 IMMUTABLUE_TRUEBLUE := trueblue trueblue-lts trueblue-nucleus trueblue-nucleus-lts trueblue-kuberblue trueblue-kuberblue-lts trueblue-kuberblue-nucleus trueblue-kuberblue-nucleus-lts
@@ -60,15 +54,17 @@ immutablue:
 immutablue-lts:
 	cd ./immutablue && make LTS=1 all 
 
-# immutablue-cyan: $(IMMUTABLUE)
 immutablue-cyan:
-	cd ./immutablue-cyan && make all 
+	cd ./immutablue && make DO_INSTALL_ZFS=true CYAN=1 all 
 
-immutablue-nucleus: $(IMMUTABLUE)
-	cd ./immutablue-nucleus && make all
+immutablue-nucleus:
+	cd ./immutablue && make DO_INSTALL_ZFS=true NUCLEUS=1 all
 
-immutablue-nucleus-lts: $(IMMUTABLUE)
-	cd ./immutablue-nucleus && make LTS=1 all
+immutablue-nucleus-lts:
+	cd ./immutablue && make DO_INSTALL_ZFS=true NUCLEUS=1 LTS=1 all
+
+immutablue-nucleus-cyan:
+	cd ./immutablue && make DO_INSTALL_ZFS=true NUCLEUS=1 CYAN=1 all
 
 kuberblue: $(IMMUTABLUE) $(NUCLEUS)
 	cd ./kuberblue && make all
