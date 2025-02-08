@@ -12,6 +12,7 @@ cd "$BUILD_DIR"
 git pull
 make clone 
 make main 
+make derivatives 
 
 # nvidia fails from time to time when repos are out of sync
 make nvidia || true 
