@@ -29,9 +29,11 @@ clone: $(CLONE)
 clean:
 	rm -rf ./immutablue{,-cyan,-nucleus} ./kuberblue ./trueblue ./hyacinth-macaw ./hawk-blueah ./blue-tuxonaut ./dbox-fedora
 
-IMMUTABLUE := immutablue immutablue-lts immutablue-kinoite immutablue-kinoite-lts immutablue-vauxite immutablue-vauxite-lts immutablue-lazurite immutablue-lazurite-lts
+IMMUTABLUE := immutablue immutablue-kinoite immutablue-vauxite immutablue-lazurite
+IMMUTABLUE_LTS := immutablue-lts immutablue-kinoite-lts immutablue-vauxite-lts immutablue-lazurite-lts
 IMMUTABLUE_CYAN := immutablue-cyan immutablue-nucleus-cyan immutablue-kinoite-cyan immutablue-vauxite-cyan immutablue-lazurite-cyan
-IMMUTABLUE_NUCLEUS := immutablue-nucleus immutablue-nucleus-lts
+IMMUTABLUE_NUCLEUS := immutablue-nucleus
+IMMUTABLUE_NUCLEUS_LTS := immutablue-nucleus-lts
 IMMUTABLUE_KUBERBLUE := kuberblue kuberblue-lts kuberblue-nucleus kuberblue-nucleus-lts
 IMMUTABLUE_TRUEBLUE := trueblue trueblue-lts trueblue-nucleus trueblue-nucleus-lts trueblue-kuberblue trueblue-kuberblue-lts trueblue-kuberblue-nucleus trueblue-kuberblue-nucleus-lts
 HYACINTH_MACAW := hyacinth-macaw hyacinth-macaw-lts
@@ -42,6 +44,7 @@ DBOX_CONTAINERS := dbox-fedora
 
 # all: $(IMMUTABLUE) $(IMMUTABLUE_CYAN) $(IMMUTABLUE_NUCLEUS) $(IMMUTABLUE_KUBERBLUE) $(IMMUTABLUE_TRUEBLUE)
 main: $(IMMUTABLUE) $(IMMUTABLUE_NUCLEUS) $(DBOX_CONTAINERS)
+main_lts: $(IMMUTABLUE_LTS) $(IMMUTABLUE_NUCLEUS_LTS)
 derivatives: $(IMMUTABLUE_KUBERBLUE) $(IMMUTABLUE_TRUEBLUE) 
 nvidia: $(IMMUTABLUE_CYAN)
 downstream: $(HYACINTH_MACAW) $(BLUE_TUXONAUT) $(HAWK_BLUEAH)
@@ -50,49 +53,49 @@ all: main nvidia downstream downstream-nvidia
 
 
 immutablue:
-	cd ./immutablue && make ZFS=true all
+	cd ./immutablue && make all
 
 immutablue-lts:
 	cd ./immutablue && make LTS=1 all
 
 immutablue-kinoite:
-	cd ./immutablue && make ZFS=1 KINOITE=1 all
+	cd ./immutablue && make KINOITE=1 all
 
 immutablue-kinoite-lts:
 	cd ./immutablue && make LTS=1 KINOITE=1 all
 
 immutablue-vauxite:
-	cd ./immutablue && make ZFS=1 VAUXITE=1 all
+	cd ./immutablue && make VAUXITE=1 all
 
 immutablue-vauxite-lts:
 	cd ./immutablue && make LTS=1 VAUXITE=1 all
 
 immutablue-lazurite:
-	cd ./immutablue && make ZFS=1 LAZURITE=1 all
+	cd ./immutablue && make LAZURITE=1 all
 
 immutablue-lazurite-lts:
 	cd ./immutablue && make LTS=1 LAZURITE=1 all
 
 immutablue-cyan:
-	cd ./immutablue && make ZFS=1 CYAN=1 all 
+	cd ./immutablue && make CYAN=1 all 
 
 immutablue-kinoite-cyan:
-	cd ./immutablue && make ZFS=1 KINOITE=1 CYAN=1 all 
+	cd ./immutablue && make KINOITE=1 CYAN=1 all 
 
 immutablue-vauxite-cyan:
-	cd ./immutablue && make ZFS=1 VAUXITE=1 CYAN=1 all 
+	cd ./immutablue && make VAUXITE=1 CYAN=1 all 
 
 immutablue-lazurite-cyan:
-	cd ./immutablue && make ZFS=1 LAZURITE=1 CYAN=1 all 
+	cd ./immutablue && make LAZURITE=1 CYAN=1 all 
 
 immutablue-nucleus:
-	cd ./immutablue && make ZFS=1 NUCLEUS=1 all
+	cd ./immutablue && make NUCLEUS=1 all
 
 immutablue-nucleus-lts:
-	cd ./immutablue && make ZFS=1 NUCLEUS=1 LTS=1 all
+	cd ./immutablue && make NUCLEUS=1 LTS=1 all
 
 immutablue-nucleus-cyan:
-	cd ./immutablue && make ZFS=1 NUCLEUS=1 CYAN=1 all
+	cd ./immutablue && make NUCLEUS=1 CYAN=1 all
 
 kuberblue: $(IMMUTABLUE) $(NUCLEUS)
 	cd ./kuberblue && make all
