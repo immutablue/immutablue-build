@@ -13,6 +13,7 @@ git pull
 make clean
 make clone 
 make main 
+make main_lts
 make derivatives 
 
 # nvidia fails from time to time when repos are out of sync
