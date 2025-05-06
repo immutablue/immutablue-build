@@ -29,6 +29,7 @@ clone: $(CLONE)
 clean:
 	rm -rf ./immutablue{,-cyan,-nucleus} ./kuberblue ./trueblue ./hyacinth-macaw ./hawk-blueah ./blue-tuxonaut ./dbox-fedora
 
+IMMUTABLUE_DEPS := immutablue-deps
 IMMUTABLUE := immutablue immutablue-kinoite immutablue-vauxite immutablue-lazurite
 IMMUTABLUE_LTS := immutablue-lts immutablue-kinoite-lts immutablue-vauxite-lts immutablue-lazurite-lts
 IMMUTABLUE_CYAN := immutablue-cyan immutablue-nucleus-cyan immutablue-kinoite-cyan immutablue-vauxite-cyan immutablue-lazurite-cyan
@@ -43,6 +44,7 @@ DBOX_CONTAINERS := dbox-fedora
 
 
 # all: $(IMMUTABLUE) $(IMMUTABLUE_CYAN) $(IMMUTABLUE_NUCLEUS) $(IMMUTABLUE_KUBERBLUE) $(IMMUTABLUE_TRUEBLUE)
+deps: $(IMMUTABLUE_DEPS)
 main: $(IMMUTABLUE) $(IMMUTABLUE_NUCLEUS) $(DBOX_CONTAINERS)
 main_lts: $(IMMUTABLUE_LTS) $(IMMUTABLUE_NUCLEUS_LTS)
 derivatives: $(IMMUTABLUE_KUBERBLUE) $(IMMUTABLUE_TRUEBLUE) 
@@ -51,6 +53,9 @@ downstream: $(HYACINTH_MACAW) $(BLUE_TUXONAUT) $(HAWK_BLUEAH)
 downstream-nvidia: hyacinth-macaw-cyan blue-tuxonaut-cyan hawk-blueah-cyan
 all: main nvidia downstream downstream-nvidia
 
+
+immutablue-deps:
+	cd ./immutablue && make build-deps push-deps
 
 immutablue:
 	cd ./immutablue && make all
