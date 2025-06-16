@@ -3,8 +3,7 @@ CLONE := clone_immutablue clone_hyacinth-macaw clone_blue-tuxonaut clone_hawk-bl
 
 
 clone_immutablue:
-	git clone https://gitlab.com/immutablue/immutablue
-	bash -c "cd ./immutablue && git submodule init && git submodule update"
+	git clone --recurse-submodules https://gitlab.com/immutablue/immutablue
 
 # clone_kuberblue: 
 # 	git clone https://gitlab.com/immutablue/kuberblue
@@ -13,7 +12,7 @@ clone_immutablue:
 # 	git clone https://gitlab.com/immutablue/trueblue
 
 clone_hyacinth-macaw:
-	git clone https://gitlab.com/immutablue/hyacinth-macaw
+	git clone --recurse-submodules https://gitlab.com/immutablue/hyacinth-macaw
 
 clone_blue-tuxonaut:
 	git clone https://gitlab.com/noahsibai/blue-tuxonaut
