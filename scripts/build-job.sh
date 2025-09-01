@@ -12,6 +12,7 @@ cd "$BUILD_DIR"
 git pull
 make clean
 make clone 
+make deps
 make main 
 make main_lts
 make derivatives 
