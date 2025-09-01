@@ -48,7 +48,7 @@ main: $(IMMUTABLUE) $(IMMUTABLUE_NUCLEUS) $(DBOX_CONTAINERS)
 main_lts: $(IMMUTABLUE_LTS) $(IMMUTABLUE_NUCLEUS_LTS)
 derivatives: $(IMMUTABLUE_KUBERBLUE) $(IMMUTABLUE_TRUEBLUE) 
 nvidia: $(IMMUTABLUE_CYAN)
-downstream: $(HYACINTH_MACAW) $(BLUE_TUXONAUT) $(HAWK_BLUEAH)
+downstream: $(HYACINTH_MACAW) #$(BLUE_TUXONAUT) #$(HAWK_BLUEAH)
 downstream-nvidia: hyacinth-macaw-cyan blue-tuxonaut-cyan hawk-blueah-cyan
 all: main nvidia downstream downstream-nvidia
 
@@ -102,39 +102,42 @@ immutablue-nucleus-cyan:
 	cd ./immutablue && make NUCLEUS=1 CYAN=1 all
 
 kuberblue: $(IMMUTABLUE) $(NUCLEUS)
-	cd ./immutablue && make all
+	cd ./immutablue && make KUBERBLUE=1 all
 
 kuberblue-lts: $(IMMUTABLUE) $(NUCLEUS)
-	cd ./immutablue && make LTS=1 all
+	cd ./immutablue && make KUBERBLUE=1 LTS=1 all
 
 kuberblue-nucleus: $(IMMUTABLUE) $(NUCLEUS)
-	cd ./immutablue && make NUCLEUS=1 all
+	cd ./immutablue && make KUBERBLUE=1 NUCLEUS=1 all
 
 kuberblue-nucleus-lts: $(IMMUTABLUE) $(NUCLEUS)
-	cd ./immutablue && make NUCLEUS=1 LTS=1 all
+	cd ./immutablue && make KUBERBLUE=1 NUCLEUS=1 LTS=1 all
 
 trueblue: $(IMMUTABLUE) $(NUCLEUS) $(KUBERBLUE) 
-	cd ./immutablue && make all
+	cd ./immutablue && make TRUEBLUE=1 all
 
 # trueblue is already lts we just don't tag it as such
 # trueblue-lts: $(IMMUTABLUE) $(NUCLEUS) $(KUBERBLUE) 
 # 	cd ./immutablue && make LTS=1 all
 
 trueblue-nucleus: $(IMMUTABLUE) $(NUCLEUS) $(KUBERBLUE) 
-	cd ./immutablue && make NUCLEUS=1 all
+	cd ./immutablue && make TRUEBLUE=1 NUCLEUS=1 all
 
-trueblue-nucleus-lts: $(IMMUTABLUE) $(NUCLEUS) $(KUBERBLUE) 
-	cd ./immutablue && make NUCLEUS=1 LTS=1 all
+# trueblue is already lts we just don't tag it as such
+# trueblue-nucleus-lts: $(IMMUTABLUE) $(NUCLEUS) $(KUBERBLUE) 
+# 	cd ./immutablue && make NUCLEUS=1 LTS=1 all
 
 trueblue-kuberblue: $(IMMUTABLUE) $(NUCLEUS) $(KUBERBLUE) 
 	cd ./immutablue && make KUBERBLUE=1 TRUEBLUE=1 all
 
+# trueblue is already lts we just don't tag it as such
 # trueblue-kuberblue-lts: $(IMMUTABLUE) $(NUCLEUS) $(KUBERBLUE) 
 # 	cd ./immutablue && make KUBERBLUE=1 LTS=1 all
 
 trueblue-kuberblue-nucleus: $(IMMUTABLUE) $(NUCLEUS) $(KUBERBLUE) 
 	cd ./immutablue && make KUBERBLUE=1 TRUEBLUE=1 NUCLEUS=1 all
 
+# trueblue is already lts we just don't tag it as such
 # trueblue-kuberblue-nucleus-lts: $(IMMUTABLUE) $(NUCLEUS) $(KUBERBLUE) 
 # 	cd ./immutablue && make KUBERBLUE_NUCLEUS=1 LTS=1 all
 
