@@ -24,3 +24,10 @@ make downstream
 # again nvidia may fail and i don't want it to fail the whole service
 make downstream-nvidia || true
 
+# re-run pruning at end
+# useful if running in a vm, keeps disk image small
+if [[ $# -ge 1 ]] && [[ "$1" == "--prune" ]]
+then 
+    buildah rmi -af 
+fi
+
