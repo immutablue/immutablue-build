@@ -57,7 +57,7 @@ immutablue-deps:
 	cd ./immutablue && make build-deps push-deps
 
 immutablue:
-	cd ./immutablue && make all
+	cd ./immutablue && make ZFS=1 all
 
 immutablue-lts:
 	cd ./immutablue && make LTS=1 all
