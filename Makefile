@@ -1,6 +1,7 @@
-.PHONY: all clean clone immutablue immutablue-cyan immutablue-nucleus kuberblue trueblue hyacinth-macaw blue-tuxonaut hawk-blueah dbox-fedora
-CLONE := clone_immutablue clone_hyacinth-macaw clone_blue-tuxonaut clone_hawk-blueah clone_dbox_fedora
+.PHONY: all clean clone immutablue immutablue-cyan immutablue-nucleus kuberblue trueblue hyacinth-macaw blue-tuxonaut hawk-blueah dbox-fedora immutablue-deps linuxbrew
+CLONE := clone_immutablue clone_hyacinth-macaw clone_blue-tuxonaut clone_hawk-blueah clone_dbox_fedora clone_linuxbrew
 
+PREV_VERSION=42
 
 clone_immutablue:
 	git clone --recurse-submodules https://gitlab.com/immutablue/immutablue
@@ -15,23 +16,26 @@ clone_hyacinth-macaw:
 	git clone --recurse-submodules https://gitlab.com/immutablue/hyacinth-macaw
 
 clone_blue-tuxonaut:
-	git clone https://gitlab.com/noahsibai/blue-tuxonaut
+	git clone --recurse-submodules https://gitlab.com/noahsibai/blue-tuxonaut
 
 clone_hawk-blueah:
-	git clone https://gitlab.com/immutablue/hawk-blueah
+	git clone --recurse-submodules https://gitlab.com/immutablue/hawk-blueah
 
 clone_dbox_fedora:
-	git clone https://gitlab.com/immutablue/dbox-fedora
+	git clone --recurse-submodules https://gitlab.com/immutablue/dbox-fedora
+
+clone_linuxbrew:
+	git clone --recurse-submodules https://gitlab.com/immutablue/linuxbrew
 
 
 clone: $(CLONE)
 clean:
 	rm -rf ./immutablue{,-cyan,-nucleus} ./kuberblue ./trueblue ./hyacinth-macaw ./hawk-blueah ./blue-tuxonaut ./dbox-fedora
 
-IMMUTABLUE_DEPS := immutablue-deps
-IMMUTABLUE := immutablue immutablue-kinoite immutablue-vauxite immutablue-lazurite
-IMMUTABLUE_LTS := immutablue-lts immutablue-kinoite-lts immutablue-vauxite-lts immutablue-lazurite-lts
-IMMUTABLUE_CYAN := immutablue-cyan immutablue-nucleus-cyan immutablue-kinoite-cyan immutablue-vauxite-cyan immutablue-lazurite-cyan
+IMMUTABLUE_DEPS := immutablue-deps linuxbrew
+IMMUTABLUE := immutablue immutablue-kinoite #immutablue-vauxite immutablue-lazurite
+IMMUTABLUE_LTS := immutablue-lts immutablue-kinoite-lts #immutablue-vauxite-lts immutablue-lazurite-lts
+IMMUTABLUE_CYAN := immutablue-cyan immutablue-nucleus-cyan immutablue-kinoite-cyan #immutablue-vauxite-cyan immutablue-lazurite-cyan
 IMMUTABLUE_NUCLEUS := immutablue-nucleus
 IMMUTABLUE_NUCLEUS_LTS := immutablue-nucleus-lts
 IMMUTABLUE_KUBERBLUE := kuberblue kuberblue-lts kuberblue-nucleus kuberblue-nucleus-lts
@@ -55,12 +59,18 @@ all: main nvidia downstream downstream-nvidia
 
 immutablue-deps:
 	cd ./immutablue && make build-deps push-deps
+	cd ./immutablue && make VERSION=$(PREV_VERSION) build-deps push-deps
+
+linuxbrew:
+	cd ./linuxbrew && make all
 
 immutablue:
 	cd ./immutablue && make ZFS=1 all
+	cd ./immutablue && make ZFS=1 VERSION=$(PREV_VERSION) all
 
 immutablue-lts:
 	cd ./immutablue && make LTS=1 all
+	cd ./immutablue && make LTS=1 VERSION=$(PREV_VERSION) all
 
 immutablue-nix:
 	cd ./immutablue && make NIX=1 all
@@ -70,9 +80,11 @@ immutablue-lts-nix:
 
 immutablue-kinoite:
 	cd ./immutablue && make KINOITE=1 all
+	cd ./immutablue && make KINOITE=1 VERSION=$(PREV_VERSION) all
 
 immutablue-kinoite-lts:
 	cd ./immutablue && make LTS=1 KINOITE=1 all
+	cd ./immutablue && make LTS=1 KINOITE=1 VERSION=$(PREV_VERSION) all
 
 immutablue-vauxite:
 	cd ./immutablue && make VAUXITE=1 all
@@ -88,9 +100,11 @@ immutablue-lazurite-lts:
 
 immutablue-cyan:
 	cd ./immutablue && make CYAN=1 all 
+	cd ./immutablue && make CYAN=1 VERSION=$(PREV_VERSION) all 
 
 immutablue-kinoite-cyan:
 	cd ./immutablue && make KINOITE=1 CYAN=1 all 
+	cd ./immutablue && make KINOITE=1 CYAN=1 VERSION=$(PREV_VERSION) all 
 
 immutablue-vauxite-cyan:
 	cd ./immutablue && make VAUXITE=1 CYAN=1 all 
@@ -100,30 +114,37 @@ immutablue-lazurite-cyan:
 
 immutablue-nucleus:
 	cd ./immutablue && make NUCLEUS=1 all
+	cd ./immutablue && make NUCLEUS=1 VERSION=$(PREV_VERSION) all
 
 immutablue-nucleus-nix:
 	cd ./immutablue && make NUCLEUS=1 NIX=1 all
 
 immutablue-nucleus-lts:
 	cd ./immutablue && make NUCLEUS=1 LTS=1 all
+	cd ./immutablue && make NUCLEUS=1 LTS=1 VERSION=$(PREV_VERSION) all
 
 immutablue-nucleus-lts-nix:
 	cd ./immutablue && make NUCLEUS=1 LTS=1 NIX=1 all
 
 immutablue-nucleus-cyan:
 	cd ./immutablue && make NUCLEUS=1 CYAN=1 all
+	cd ./immutablue && make NUCLEUS=1 CYAN=1 VERSION=$(PREV_VERSION) all
 
 kuberblue:
 	cd ./immutablue && make KUBERBLUE=1 all
+	cd ./immutablue && make KUBERBLUE=1 VERSION=$(PREV_VERSION) all
 
 kuberblue-lts:
 	cd ./immutablue && make KUBERBLUE=1 LTS=1 all
+	cd ./immutablue && make KUBERBLUE=1 LTS=1 VERSION=$(PREV_VERSION) all
 
 kuberblue-nucleus: 
 	cd ./immutablue && make KUBERBLUE=1 NUCLEUS=1 all
+	cd ./immutablue && make KUBERBLUE=1 NUCLEUS=1 VERSION=$(PREV_VERSION) all
 
 kuberblue-nucleus-lts: 
 	cd ./immutablue && make KUBERBLUE=1 NUCLEUS=1 LTS=1 all
+	cd ./immutablue && make KUBERBLUE=1 NUCLEUS=1 LTS=1 VERSION=$(PREV_VERSION) all
 
 kuberblue-nix:
 	cd ./immutablue && make KUBERBLUE=1 NIX=1 all
@@ -140,6 +161,7 @@ kuberblue-nucleus-lts-nix:
 
 trueblue: 
 	cd ./immutablue && make TRUEBLUE=1 all
+	cd ./immutablue && make TRUEBLUE=1 VERSION=$(PREV_VERSION) all
 
 # trueblue is already lts we just don't tag it as such
 # trueblue-lts: $(IMMUTABLUE) $(NUCLEUS) $(KUBERBLUE) 
@@ -147,6 +169,7 @@ trueblue:
 
 trueblue-nucleus:
 	cd ./immutablue && make TRUEBLUE=1 NUCLEUS=1 all
+	cd ./immutablue && make TRUEBLUE=1 NUCLEUS=1 VERSION=$(PREV_VERSION) all
 
 # trueblue is already lts we just don't tag it as such
 # trueblue-nucleus-lts: $(IMMUTABLUE) $(NUCLEUS) $(KUBERBLUE) 
@@ -154,6 +177,7 @@ trueblue-nucleus:
 
 trueblue-kuberblue:
 	cd ./immutablue && make KUBERBLUE=1 TRUEBLUE=1 all
+	cd ./immutablue && make KUBERBLUE=1 TRUEBLUE=1 VERSION=$(PREV_VERSION) all
 
 # trueblue is already lts we just don't tag it as such
 # trueblue-kuberblue-lts: $(IMMUTABLUE) $(NUCLEUS) $(KUBERBLUE) 
@@ -161,6 +185,7 @@ trueblue-kuberblue:
 
 trueblue-kuberblue-nucleus:
 	cd ./immutablue && make KUBERBLUE=1 TRUEBLUE=1 NUCLEUS=1 all
+	cd ./immutablue && make KUBERBLUE=1 TRUEBLUE=1 NUCLEUS=1 VERSION=$(PREV_VERSION) all
 
 # trueblue is already lts we just don't tag it as such
 # trueblue-kuberblue-nucleus-lts: $(IMMUTABLUE) $(NUCLEUS) $(KUBERBLUE) 
@@ -183,9 +208,11 @@ trueblue-kuberblue-nucleus-nix:
 
 hyacinth-macaw: 
 	cd ./hyacinth-macaw && make all
+	cd ./hyacinth-macaw && make VERSION=$(PREV_VERSION) all
 
 hyacinth-macaw-lts:
 	cd ./hyacinth-macaw && make LTS=1 all
+	cd ./hyacinth-macaw && make LTS=1 VERSION=$(PREV_VERSION) all
 
 hyacinth-macaw-nix: 
 	cd ./hyacinth-macaw && make NIX=1 all
