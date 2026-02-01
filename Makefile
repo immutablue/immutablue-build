@@ -29,14 +29,14 @@ clean:
 	rm -rf ./immutablue{,-cyan,-nucleus} ./kuberblue ./trueblue ./hyacinth-macaw ./hawk-blueah ./blue-tuxonaut ./dbox-fedora
 
 IMMUTABLUE_DEPS := immutablue-deps
-IMMUTABLUE := immutablue immutablue-kinoite immutablue-vauxite immutablue-lazurite immutablue-nix
-IMMUTABLUE_LTS := immutablue-lts immutablue-lts-nix immutablue-kinoite-lts immutablue-vauxite-lts immutablue-lazurite-lts
+IMMUTABLUE := immutablue immutablue-kinoite immutablue-vauxite immutablue-lazurite
+IMMUTABLUE_LTS := immutablue-lts immutablue-kinoite-lts immutablue-vauxite-lts immutablue-lazurite-lts
 IMMUTABLUE_CYAN := immutablue-cyan immutablue-nucleus-cyan immutablue-kinoite-cyan immutablue-vauxite-cyan immutablue-lazurite-cyan
-IMMUTABLUE_NUCLEUS := immutablue-nucleus immutablue-nucleus-nix
-IMMUTABLUE_NUCLEUS_LTS := immutablue-nucleus-lts immutablue-nucleus-lts-nix
-IMMUTABLUE_KUBERBLUE := kuberblue kuberblue-lts kuberblue-nucleus kuberblue-nucleus-lts kuberblue-nix kuberblue-lts-nix kuberblue-nucleus-nix kuberblue-nucleus-lts-nix
-IMMUTABLUE_TRUEBLUE := trueblue trueblue-nucleus trueblue-kuberblue  trueblue-kuberblue-nucleus trueblue-nix trueblue-nucleus-nix trueblue-kuberblue-nix trueblue-kuberblue-nucleus-nix
-HYACINTH_MACAW := hyacinth-macaw hyacinth-macaw-lts hyacinth-macaw-nix hyacinth-macaw-lts-nix
+IMMUTABLUE_NUCLEUS := immutablue-nucleus
+IMMUTABLUE_NUCLEUS_LTS := immutablue-nucleus-lts
+IMMUTABLUE_KUBERBLUE := kuberblue kuberblue-lts kuberblue-nucleus kuberblue-nucleus-lts
+IMMUTABLUE_TRUEBLUE := trueblue trueblue-nucleus trueblue-kuberblue trueblue-kuberblue-nucleus
+HYACINTH_MACAW := hyacinth-macaw hyacinth-macaw-lts
 BLUE_TUXONAUT := blue-tuxonaut blue-tuxonaut-lts
 HAWK_BLUEAH := hawk-blueah hawk-blueah-lts
 DBOX_CONTAINERS := dbox-fedora
